@@ -40,72 +40,17 @@ const MainScreen = ({
 }) => {
   const [time, setTime] = useState("");
   let clock = () => {
-    let time = new Date(),
-      hours = time.getHours() < 10 ? "0" + time.getHours() : time.getHours(),
-      minutes =
-        time.getMinutes() < 10 ? "0" + time.getMinutes() : time.getMinutes(),
-      seconds =
-        time.getSeconds() < 10 ? "0" + time.getSeconds() : time.getSeconds(),
-      date = time.getDate() + 1 < 10 ? "0" + time.getDate() : time.getDate(),
-      month =
-        time.getMonth() < 10
-          ? "0" + (time.getMonth() + 1)
-          : time.getMonth() + 1,
-      year =
-        time.getFullYear() < 10 ? "0" + time.getFullYear() : time.getFullYear();
-    setTime(
-      date +
-        "." +
-        month +
-        "." +
-        year +
-        " " +
-        hours +
-        ":" +
-        minutes +
-        ":" +
-        seconds
-    );
+    let time = new Date().toLocaleString();
+    setTime(time);
   };
   setInterval(clock, 1000);
 
-  const myFunc = () => {
-    if (1 === 1) return <div>abc</div>;
-  };
-
-  const tableHeaders = (
-    <tr>
-      <td>af</td>
-      <td>bf</td>
-      <td>cf </td>
-    </tr>
-  );
-
-  const tableRows = (
-    <>
-      <tr>
-        <td>a</td>
-        <td>b</td>
-        <td>c</td>
-      </tr>
-      <tr>
-        <td>a</td>
-        <td>b</td>
-        <td>c</td>
-      </tr>
-    </>
-  );
   return (
     <MainWrapper>
       <Header>My ToDo list</Header>
-      <table border={1}>
-        <thead>{tableHeaders}</thead>
-        <tbody>{tableRows}</tbody>
-      </table>
       <Body>
         <ToDoWrapper>
           <div>
-            {myFunc()}
             {(toDoPage.filterTasks === "Completed"
               ? toDoPage.ToDoData.filter(({ checked }) => checked)
               : toDoPage.filterTasks === "Uncompleted"

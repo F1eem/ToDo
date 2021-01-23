@@ -39,7 +39,7 @@ const initialState = {
     },
   ],
   newTextAddTask: "",
-  filterTasks: "Uncompleted",
+  filterTasks: "All",
 };
 
 export const ToDoReducer = (state = initialState, action) => {
